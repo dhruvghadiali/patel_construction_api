@@ -164,7 +164,7 @@ app.post('/api/sendJobApplication', upload.single('resume'), async (req, res) =>
     const [hrEmail, confirmationEmail] = await Promise.all([
       resend.emails.send({
         from: 'Patel Construction <onboarding@resend.dev>',
-        to: 'dhruvghadiali21@gmail.com',
+        to: 'patelconstruction13@gmail.com',
         subject: `New Job Application - ${firstName} ${lastName} (${department})`,
         html: hrEmailHtml,
         reply_to: email,
@@ -315,7 +315,7 @@ app.post('/api/contactUs', async (req, res) => {
     const [inquiryEmail, thankYouEmail] = await Promise.all([
       resend.emails.send({
         from: 'Patel Construction <onboarding@resend.dev>',
-        to: 'dhruvghadiali21@gmail.com',
+        to: 'patelconstruction13@gmail.com',
         subject: `New Inquiry - ${companyName} (${firstName} ${lastName})`,
         html: inquiryEmailHtml,
         reply_to: companyEmail,

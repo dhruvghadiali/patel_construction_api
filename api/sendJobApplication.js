@@ -133,7 +133,7 @@ export default async function handler(req, res) {
     const [hrEmail, confirmationEmail] = await Promise.all([
       resend.emails.send({
         from: 'Patel Construction <onboarding@resend.dev>',
-        to: 'dhruvghadiali21@gmail.com',
+        to: 'patelconstruction13@gmail.com',
         subject: `New Job Application - ${firstName} ${lastName} (${department})`,
         html: hrEmailHtml,
         reply_to: email,
