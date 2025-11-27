@@ -353,4 +353,5 @@ app.post('/api/contactUs', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
   console.log(`API endpoint: http://localhost:${PORT}/api/sendJobApplication`);
+  console.log(`API endpoint: http://localhost:${PORT}/api/contactUs`);
 });
