@@ -129,17 +129,18 @@ export default async function handler(req, res) {
       </html>
     `;
 
+    let domainName = "Patel Construction <noreply@patelconstruction.co>"
     // Send both emails
     const [hrEmail, confirmationEmail] = await Promise.all([
       resend.emails.send({
-        from: 'Patel Construction <onboarding@resend.dev>',
+        from: domainName,
         to: 'patelconstruction13@gmail.com',
         subject: `New Job Application - ${firstName} ${lastName} (${department})`,
         html: hrEmailHtml,
         reply_to: email,
       }),
       resend.emails.send({
-        from: 'Patel Construction <onboarding@resend.dev>',
+        from: domainName,
         to: email,
         subject: 'Application Received - Patel Construction',
         html: confirmationEmailHtml,
