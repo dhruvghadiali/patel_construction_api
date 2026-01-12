@@ -10,6 +10,8 @@ const PORT = process.env.PORT || 3001;
 
 // Initialize Resend
 const resend = new Resend('re_c9oesu6d_EYu5CabvucSi1hfQGCmDJYe8');
+const domainName = "Patel Construction <noreply@patelconstruction.co>";
+const patelConstructionEmail = 'patelconstruction13@gmail.com';
 
 // Configure multer for file upload
 const storage = multer.memoryStorage();
@@ -163,15 +165,15 @@ app.post('/api/sendJobApplication', upload.single('resume'), async (req, res) =>
     // Send both emails
     const [hrEmail, confirmationEmail] = await Promise.all([
       resend.emails.send({
-        from: 'Patel Construction <onboarding@resend.dev>',
-        to: 'patelconstruction13@gmail.com',
+        from: domainName,
+        to: patelConstructionEmail,
         subject: `New Job Application - ${firstName} ${lastName} (${department})`,
         html: hrEmailHtml,
         reply_to: email,
         attachments: [attachment],
       }),
       resend.emails.send({
-        from: 'Patel Construction <onboarding@resend.dev>',
+        from: domainName,
         to: email,
         subject: 'Application Received - Patel Construction',
         html: confirmationEmailHtml,
@@ -181,6 +183,8 @@ app.post('/api/sendJobApplication', upload.single('resume'), async (req, res) =>
     console.log('Emails sent successfully:', {
       hrEmailId: hrEmail.data?.id,
       confirmationEmailId: confirmationEmail.data?.id,
+      email: email,
+      patelConstructionEmail: patelConstructionEmail,
     });
 
     return res.status(200).json({
@@ -314,14 +318,14 @@ app.post('/api/contactUs', async (req, res) => {
     // Send both emails
     const [inquiryEmail, thankYouEmail] = await Promise.all([
       resend.emails.send({
-        from: 'Patel Construction <onboarding@resend.dev>',
-        to: 'patelconstruction13@gmail.com',
+        from: domainName,
+        to: patelConstructionEmail,
         subject: `New Inquiry - ${companyName} (${firstName} ${lastName})`,
         html: inquiryEmailHtml,
         reply_to: companyEmail,
       }),
       resend.emails.send({
-        from: 'Patel Construction <onboarding@resend.dev>',
+        from: domainName,
         to: companyEmail,
         subject: 'Thank You for Contacting Patel Construction',
         html: thankYouEmailHtml,
@@ -331,6 +335,8 @@ app.post('/api/contactUs', async (req, res) => {
     console.log('Contact emails sent successfully:', {
       inquiryEmailId: inquiryEmail.data?.id,
       thankYouEmailId: thankYouEmail.data?.id,
+      patelConstructionEmail: patelConstructionEmail,
+      email: companyEmail,
     });
 
     return res.status(200).json({
