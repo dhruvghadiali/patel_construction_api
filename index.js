@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3001;
 
 // Initialize Resend
 const resend = new Resend('re_c9oesu6d_EYu5CabvucSi1hfQGCmDJYe8');
-const domainName = "Patel Construction <noreply@patelconstruction.co>";
+const domainName = "Patel Construction <info@patelconstruction.co>";
 const patelConstructionEmail = 'patelconstruction13@gmail.com';
 
 // Configure multer for file upload
